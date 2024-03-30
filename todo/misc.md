@@ -1,4 +1,19 @@
-# MISC
+
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
 
 In a ping response TTL:\
 127 = Windows\
@@ -13,7 +28,7 @@ $6$- sha512
 If you do not know what is behind a service, try to make and HTTP GET request.
 
 **UDP Scans**\
-****nc -nv -u -z -w 1 \<IP> 160-16
+nc -nv -u -z -w 1 \<IP> 160-16
 
 An empty UDP packet is sent to a specific port. If the UDP port is open, no reply is sent back from the target machine. If the UDP port is closed, an ICMP port unreachable packet should be sent back from the target machine.\
 
@@ -24,7 +39,7 @@ UDP port scanning is often unreliable, as firewalls and routers may drop ICMP\
  o Most port scanners do not scan all available ports, and usually have a preset list\
  of “interesting ports” that are scanned.
 
-## CTF - Tricks
+# CTF - Tricks
 
 In **Windows** use **Winzip** to search for files.\
 **Alternate data Streams**: _dir /r | find ":$DATA"_\
@@ -35,7 +50,7 @@ binwalk --dd=".*" <file> #Extract everything
 binwalk -M -e -d=10000 suspicious.pdf #Extract, look inside extracted files and continue extracing (depth of 10000)
 ```
 
-### Crypto
+## Crypto
 
 **featherduster**\
 
@@ -56,6 +71,23 @@ rsatool
 
 Snow --> Hide messages using spaces and tabs
 
-## Characters
+# Characters
 
 %E2%80%AE => RTL Character (writes payloads backwards)
+
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
+

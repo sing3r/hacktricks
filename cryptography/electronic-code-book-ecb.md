@@ -1,6 +1,21 @@
-# Electronic Code Book (ECB)
 
-## ECB
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
+
+# ECB
 
 (ECB) Electronic Code Book - symmetric encryption scheme which **replaces each block of the clear text** by the **block of ciphertext**. It is the **simplest** encryption scheme. The main idea is to **split** the clear text into **blocks of N bits** (depends on the size of the block of input data, encryption algorithm) and then to encrypt (decrypt) each block of clear text using the only key.
 
@@ -11,7 +26,7 @@ Using ECB has multiple security implications:
 * **Blocks from encrypted message can be removed**
 * **Blocks from encrypted message can be moved around**
 
-## Detection of the vulnerability
+# Detection of the vulnerability
 
 Imagine you login into an application several times and you **always get the same cookie**. This is because the cookie of the application is **`<username>|<password>`**.\
 Then, you generate to new users, both of them with the **same long password** and **almost** the **same** **username**.\
@@ -37,9 +52,9 @@ Now, the attacker just need to discover if the format is `<username><delimiter><
 | 4                | 4                | 8                         | 16                                |
 | 7                | 7                | 14                        | 16                                |
 
-## Exploitation of the vulnerability
+# Exploitation of the vulnerability
 
-### Removing entire blocks
+## Removing entire blocks
 
 Knowing the format of the cookie (`<username>|<password>`), in order to impersonate the username `admin` create a new user called `aaaaaaaaadmin` and get the cookie and decode it:
 
@@ -54,7 +69,7 @@ Then, you can remove the first block of 8B and you will et a valid cookie for th
 \xE0Vd8oE\x123\aO\x43T\x32\xD5U\xD4
 ```
 
-### Moving blocks
+## Moving blocks
 
 In many databases it is the same to search for `WHERE username='admin';` or for `WHERE username='admin    ';` _(Note the extra spaces)_
 
@@ -65,8 +80,25 @@ So, another way to impersonate the user `admin` would be to:
 
 The cookie of this user is going to be composed by 3 blocks: the first 2 is the blocks of the username + delimiter and the third one of the password (which is faking the username): `username       |admin   `
 
-** Then, just replace the first block with the last time and will be impersonating the user `admin`: `admin          |username`**
+**Then, just replace the first block with the last time and will be impersonating the user `admin`: `admin          |username`**
 
 ## References
 
 * [http://cryptowiki.net/index.php?title=Electronic_Code_Book\_(ECB)](http://cryptowiki.net/index.php?title=Electronic_Code_Book_\(ECB\))
+
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
+

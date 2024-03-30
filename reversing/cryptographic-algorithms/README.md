@@ -1,28 +1,44 @@
 # Cryptographic/Compression Algorithms
 
+## Cryptographic/Compression Algorithms
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
 ## Identifying Algorithms
 
 If you ends in a code **using shift rights and lefts, xors and several arithmetic operations** it's highly possible that it's the implementation of a **cryptographic algorithm**. Here it's going to be showed some ways to **identify the algorithm that it's used without needing to reverse each step**.
 
 ### API functions
 
-#### CryptDeriveKey
+**CryptDeriveKey**
 
 If this function is used, you can find which **algorithm is being used** checking the value of the second parameter:
 
-![](<../../.gitbook/assets/image (375).png>)
+![](<../../.gitbook/assets/image (375) (1) (1) (1) (1).png>)
 
 Check here the table of possible algorithms and their assigned values: [https://docs.microsoft.com/en-us/windows/win32/seccrypto/alg-id](https://docs.microsoft.com/en-us/windows/win32/seccrypto/alg-id)
 
-#### RtlCompressBuffer/RtlDecompressBuffer
+**RtlCompressBuffer/RtlDecompressBuffer**
 
 Compresses and decompresses a given buffer of data.
 
-#### CryptAcquireContext
+**CryptAcquireContext**
 
-&#x20;The **CryptAcquireContext** function is used to acquire a handle to a particular key container within a particular cryptographic service provider (CSP). **This returned handle is used in calls to CryptoAPI** functions that use the selected CSP.
+From [the docs](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecontexta): The **CryptAcquireContext** function is used to acquire a handle to a particular key container within a particular cryptographic service provider (CSP). **This returned handle is used in calls to CryptoAPI** functions that use the selected CSP.
 
-#### CryptCreateHash
+**CryptCreateHash**
 
 Initiates the hashing of a stream of data. If this function is used, you can find which **algorithm is being used** checking the value of the second parameter:
 
@@ -67,7 +83,7 @@ It's composed of 3 main parts:
 **In order to identify a RC4 in a disassembly/decompiled code you can check for 2 loops of size 0x100 (with the use of a key) and then a XOR of the input data with the 256 values created before in the 2 loops probably using a %256 (mod 256)**
 {% endhint %}
 
-### **Initialization stage/Substitution Box:** ****(Note the number 256 used as counter and how a 0 is written in each place of the 256 chars)
+### **Initialization stage/Substitution Box:** (Note the number 256 used as counter and how a 0 is written in each place of the 256 chars)
 
 ![](<../../.gitbook/assets/image (377).png>)
 
@@ -84,7 +100,7 @@ It's composed of 3 main parts:
 ### **Characteristics**
 
 * Use of **substitution boxes and lookup tables**
-  * It's possible to **distinguish AES thanks to the use of specific lookup table values** (constants). _Note that the **constant** can be **stored** in the binary **or created**  **dynamically**._
+  * It's possible to **distinguish AES thanks to the use of specific lookup table values** (constants). _Note that the **constant** can be **stored** in the binary **or created**_ _**dynamically**._
 * The **encryption key** must be **divisible** by **16** (usually 32B) and usually an **IV** of 16B is used.
 
 ### SBox constants
@@ -96,7 +112,7 @@ It's composed of 3 main parts:
 ### Characteristics
 
 * It's rare to find some malware using it but there are examples (Ursnif)
-* Simple to determine if an algorithm is Serpent or not based on it's length (extremely long function)&#x20;
+* Simple to determine if an algorithm is Serpent or not based on it's length (extremely long function)
 
 ### Identifying
 
@@ -135,13 +151,13 @@ Therefore, it's possible to identify this algorithm checking the **magic number*
 
 ### Identify
 
-#### Init
+**Init**
 
 You can identify both of them checking the constants. Note that the sha\_init has 1 constant that MD5 doesn't have:
 
 ![](<../../.gitbook/assets/image (385).png>)
 
-#### MD5 Transform
+**MD5 Transform**
 
 Note the use of more constants
 
@@ -158,13 +174,9 @@ Check **lookup table constants**:
 
 ![](<../../.gitbook/assets/image (387).png>)
 
-
-
 A CRC hash algorithm looks like:
 
 ![](<../../.gitbook/assets/image (386).png>)
-
-
 
 ## APLib (Compression)
 
@@ -182,3 +194,17 @@ The graph is quiet large:
 Check **3 comparisons to recognise it**:
 
 ![](<../../.gitbook/assets/image (384).png>)
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>

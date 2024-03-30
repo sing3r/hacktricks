@@ -1,8 +1,26 @@
 # Other Web Tricks
 
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
 ### Host header
 
-Several times the back-end trust the H**ost header** to perform some actions. For example, it could use its value as the **domain to send a password reset**. So when you receive an email with a link to reset your password, the domain being used is the one you put in the Host header.Then, you can request the password reset of other users and change the domain to one controlled by you to steal their password reset codes. [WriteUp](https://medium.com/nassec-cybersecurity-writeups/how-i-was-able-to-take-over-any-users-account-with-host-header-injection-546fff6d0f2).&#x20;
+Several times the back-end trust the **Host header** to perform some actions. For example, it could use its value as the **domain to send a password reset**. So when you receive an email with a link to reset your password, the domain being used is the one you put in the Host header.Then, you can request the password reset of other users and change the domain to one controlled by you to steal their password reset codes. [WriteUp](https://medium.com/nassec-cybersecurity-writeups/how-i-was-able-to-take-over-any-users-account-with-host-header-injection-546fff6d0f2).
+
+{% hint style="warning" %}
+Note that it's possible that you don't even need to wait for the user to click on the reset password link to get the token, as maybe even **spam filters or other intermediary devices/bots will click on it to analyze it**.
+{% endhint %}
 
 ### Session booleans
 
@@ -26,3 +44,18 @@ Register an email, before confirming it change the email, then, if the new confi
 Developers might forget to disable various debugging options in the production environment. For example, the HTTP `TRACE` method is designed for diagnostic purposes. If enabled, the web server will respond to requests that use the `TRACE` method by echoing in the response the exact request that was received. This behaviour is often harmless, but occasionally leads to information disclosure, such as the name of internal authentication headers that may be appended to requests by reverse proxies.![Image for post](https://miro.medium.com/max/60/1\*wDFRADTOd9Tj63xucenvAA.png?q=20)
 
 ![Image for post](https://miro.medium.com/max/1330/1\*wDFRADTOd9Tj63xucenvAA.png)
+
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>

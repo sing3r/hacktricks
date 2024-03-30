@@ -1,5 +1,33 @@
 # Reversing Tools & Basic Methods
 
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks\_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
+**Try Hard Security Group**
+
+<figure><img src="/.gitbook/assets/telegram-cloud-document-1-5159108904864449420.jpg" alt=""><figcaption></figcaption></figure>
+
+{% embed url="https://discord.gg/tryhardsecurity" %}
+
+***
+
+## ImGui Based Reversing tools
+
+Software:
+
+* ReverseKit: [https://github.com/zer0condition/ReverseKit](https://github.com/zer0condition/ReverseKit)
+
 ## Wasm decompiler / Wat compiler
 
 Online:
@@ -13,18 +41,35 @@ Software:
 * [https://www.pnfsoftware.com/jeb/demo](https://www.pnfsoftware.com/jeb/demo)
 * [https://github.com/wwwg/wasmdec](https://github.com/wwwg/wasmdec)
 
-## .Net decompiler
+## .NET decompiler
 
-[https://github.com/icsharpcode/ILSpy](https://github.com/icsharpcode/ILSpy)\
+### [dotPeek](https://www.jetbrains.com/decompiler/)
+
+dotPeek is a decompiler that **decompiles and examines multiple formats**, including **libraries** (.dll), **Windows metadata file**s (.winmd), and **executables** (.exe). Once decompiled, an assembly can be saved as a Visual Studio project (.csproj).
+
+The merit here is that if a lost source code requires restoration from a legacy assembly, this action can save time. Further, dotPeek provides handy navigation throughout the decompiled code, making it one of the perfect tools for **Xamarin algorithm analysis.**
+
+### [.NET Reflector](https://www.red-gate.com/products/reflector/)
+
+With a comprehensive add-in model and an API that extends the tool to suit your exact needs, .NET reflector saves time and simplifies development. Let's take a look at the plethora of reverse engineering services this tool provides:
+
+* Provides an insight into how the data flows through a library or component
+* Provides insight into the implementation and usage of .NET languages and frameworks
+* Finds undocumented and unexposed functionality to get more out of the APIs and technologies used.
+* Finds dependencies and different assemblies
+* Tracks down the exact location of errors in your code, third-party components, and libraries.
+* Debugs into the source of all the .NET code you work with.
+
+### [ILSpy](https://github.com/icsharpcode/ILSpy) & [dnSpy](https://github.com/dnSpy/dnSpy/releases)
+
 [ILSpy plugin for Visual Studio Code](https://github.com/icsharpcode/ilspy-vscode): You can have it in any OS (you can install it directly from VSCode, no need to download the git. Click on **Extensions** and **search ILSpy**).\
-If you need to **decompile**, **modify** and **recompile** again you can use: [**https://github.com/0xd4d/dnSpy/releases**](https://github.com/0xd4d/dnSpy/releases) (**Right Click -> Modify Method** to change something inside a function).\
-You cloud also try [https://www.jetbrains.com/es-es/decompiler/](https://www.jetbrains.com/es-es/decompiler/)
+If you need to **decompile**, **modify** and **recompile** again you can use [**dnSpy**](https://github.com/dnSpy/dnSpy/releases) or an actively maintained fork of it, [**dnSpyEx**](https://github.com/dnSpyEx/dnSpy/releases). (**Right Click -> Modify Method** to change something inside a function).
 
 ### DNSpy Logging
 
-In order to make **DNSpy log some information in a file**, you could use this .Net lines:
+In order to make **DNSpy log some information in a file**, you could use this snippet:
 
-```bash
+```cs
 using System.IO;
 path = "C:\\inetpub\\temp\\MyTest2.txt";
 File.AppendAllText(path, "Password: " + password + "\n");
@@ -57,13 +102,13 @@ And click on **compile**:
 
 ![](<../../.gitbook/assets/image (314) (1) (1).png>)
 
-Then save the new file on _**File >> Save module...**_:
+Then save the new file via _**File >> Save module...**_:
 
 ![](<../../.gitbook/assets/image (279).png>)
 
 This is necessary because if you don't do this, at **runtime** several **optimisations** will be applied to the code and it could be possible that while debugging a **break-point is never hit** or some **variables don't exist**.
 
-Then, if your .Net application is being **run** by **IIS** you can **restart** it with:
+Then, if your .NET application is being **run** by **IIS** you can **restart** it with:
 
 ```
 iisreset /noforce
@@ -83,7 +128,7 @@ Now that we are debugging the process, it's time to stop it and load all the mod
 
 ![](<../../.gitbook/assets/image (283).png>)
 
-Click any module on **Modules** and selec**t Open All Modules**:
+Click any module on **Modules** and select **Open All Modules**:
 
 ![](<../../.gitbook/assets/image (284).png>)
 
@@ -129,7 +174,7 @@ Then, looking to this ca see when the execution was stopped in the dll you want 
 
 ## GUI Apps / Videogames
 
-****[**Cheat Engine**](https://www.cheatengine.org/downloads.php) is a useful program to find where important values are saved inside the memory of a running game and change them. More info in:
+[**Cheat Engine**](https://www.cheatengine.org/downloads.php) is a useful program to find where important values are saved inside the memory of a running game and change them. More info in:
 
 {% content-ref url="cheat-engine.md" %}
 [cheat-engine.md](cheat-engine.md)
@@ -155,7 +200,7 @@ You can find a slightly modified version of Blobrunner in the following link. In
 
 ### Debugging a shellcode with jmp2it
 
-****[**jmp2it** ](https://github.com/adamkramer/jmp2it/releases/tag/v1.4)is very similar to blobrunner. It will **allocate** the **shellcode** inside a space of memory, and start an **eternal loop**. You then need to **attach the debugger** to the process, **play start wait 2-5 secs and press stop** and you will find yourself inside the **eternal loop**. Jump to the next instruction of the eternal loop as it will be a call to the shellcode, and finally you will find yourself executing the shellcode.
+[**jmp2it** ](https://github.com/adamkramer/jmp2it/releases/tag/v1.4)is very similar to blobrunner. It will **allocate** the **shellcode** inside a space of memory, and start an **eternal loop**. You then need to **attach the debugger** to the process, **play start wait 2-5 secs and press stop** and you will find yourself inside the **eternal loop**. Jump to the next instruction of the eternal loop as it will be a call to the shellcode, and finally you will find yourself executing the shellcode.
 
 ![](<../../.gitbook/assets/image (397).png>)
 
@@ -163,7 +208,7 @@ You can download a compiled version of [jmp2it inside the releases page](https:/
 
 ### Debugging shellcode using Cutter
 
-****[**Cutter**](https://github.com/rizinorg/cutter/releases/tag/v1.12.0) is the GUI of radare. Using cutter you can emulate the shellcode and inspect it dynamically.
+[**Cutter**](https://github.com/rizinorg/cutter/releases/tag/v1.12.0) is the GUI of radare. Using cutter you can emulate the shellcode and inspect it dynamically.
 
 Note that Cutter allows you to "Open File" and "Open Shellcode". In my case when I opened the shellcode as a file it decompiled it correctly, but when I opened it as a shellcode it didn't:
 
@@ -201,16 +246,16 @@ The **Create Dump** option will dump the final shellcode if any change is done t
 
 ### Disassembling using CyberChef
 
-Upload you shellcode file as input and use the following receipt to decompile it: [https://gchq.github.io/CyberChef/#recipe=To\_Hex('Space',0)Disassemble\_x86('32','Full%20x86%20architecture',16,0,true,true)](https://gchq.github.io/CyberChef/#recipe=To\_Hex\('Space',0\)Disassemble\_x86\('32','Full%20x86%20architecture',16,0,true,true\))
+Upload your shellcode file as input and use the following recipe to decompile it: [https://gchq.github.io/CyberChef/#recipe=To\_Hex('Space',0)Disassemble\_x86('32','Full%20x86%20architecture',16,0,true,true)](https://gchq.github.io/CyberChef/#recipe=To\_Hex\('Space',0\)Disassemble\_x86\('32','Full%20x86%20architecture',16,0,true,true\))
 
 ## [Movfuscator](https://github.com/xoreaxeaxeax/movfuscator)
 
-This obfuscator **modify all the instructions for `mov`**(yeah, really cool). It also uses interruptions to change executions flows. For more information about how does it works:
+This obfuscator **modifies all the instructions for `mov`**(yeah, really cool). It also uses interruptions to change executions flows. For more information about how does it works:
 
 * [https://www.youtube.com/watch?v=2VF\_wPkiBJY](https://www.youtube.com/watch?v=2VF\_wPkiBJY)
 * [https://github.com/xoreaxeaxeax/movfuscator/blob/master/slides/domas\_2015\_the\_movfuscator.pdf](https://github.com/xoreaxeaxeax/movfuscator/blob/master/slides/domas\_2015\_the\_movfuscator.pdf)
 
-If you are lucky [demovfuscator ](https://github.com/kirschju/demovfuscator)will deofuscate the binary. It has several dependencies
+If you are lucky [demovfuscator](https://github.com/kirschju/demovfuscator) will deofuscate the binary. It has several dependencies
 
 ```
 apt-get install libcapstone-dev
@@ -219,7 +264,7 @@ apt-get install libz3-dev
 
 And [install keystone](https://github.com/keystone-engine/keystone/blob/master/docs/COMPILE-NIX.md) (`apt-get install cmake; mkdir build; cd build; ../make-share.sh; make install`)
 
-If you are playing a **CTF, this workaround to find the flag** could be very useful: [https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html](https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html)&#x20;
+If you are playing a **CTF, this workaround to find the flag** could be very useful: [https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html](https://dustri.org/b/defeating-the-recons-movfuscator-crackme.html)
 
 ## Rust
 
@@ -234,7 +279,7 @@ Having the **name** of the **functions** being called, search for them on the **
 
 For Delphi compiled binaries you can use [https://github.com/crypto2011/IDR](https://github.com/crypto2011/IDR)
 
-I you have to reverse a Delphi binary I would suggest you to use the IDA plugin [https://github.com/Coldzer0/IDA-For-Delphi](https://github.com/Coldzer0/IDA-For-Delphi)****
+If you have to reverse a Delphi binary I would suggest you to use the IDA plugin [https://github.com/Coldzer0/IDA-For-Delphi](https://github.com/Coldzer0/IDA-For-Delphi)
 
 Just press **ATL+f7** (import python plugin in IDA) and select the python plugin.
 
@@ -244,7 +289,7 @@ It is also very interesting because if you press a button in the graphic applica
 
 ## Golang
 
-I you have to reverse a Golang binary I would suggest you to use the IDA plugin [https://github.com/sibears/IDAGolangHelper](https://github.com/sibears/IDAGolangHelper)
+If you have to reverse a Golang binary I would suggest you to use the IDA plugin [https://github.com/sibears/IDAGolangHelper](https://github.com/sibears/IDAGolangHelper)
 
 Just press **ATL+f7** (import python plugin in IDA) and select the python plugin.
 
@@ -262,12 +307,12 @@ In this page you can find how to get the python code from an ELF/EXE python comp
 
 If you get the **binary** of a GBA game you can use different tools to **emulate** and **debug** it:
 
-* ****[**no$gba**](https://problemkaputt.de/gba.htm) (_Download the debug version_) - Contains a debugger with interface
-* ****[**mgba** ](https://mgba.io)- Contains a CLI debugger
-* ****[**gba-ghidra-loader**](https://github.com/pudii/gba-ghidra-loader) - Ghidra plugin
+* [**no$gba**](https://problemkaputt.de/gba.htm) (_Download the debug version_) - Contains a debugger with interface
+* [**mgba** ](https://mgba.io)- Contains a CLI debugger
+* [**gba-ghidra-loader**](https://github.com/pudii/gba-ghidra-loader) - Ghidra plugin
 * [**GhidraGBA**](https://github.com/SiD3W4y/GhidraGBA) - Ghidra plugin
 
-In [**no$gba**](https://problemkaputt.de/gba.htm), in _**Options --> Emulation Setup --> Controls**_** ** you can see how to press the Game Boy Advance **buttons**
+In [**no$gba**](https://problemkaputt.de/gba.htm), in _**Options --> Emulation Setup --> Controls**_\*\* \*\* you can see how to press the Game Boy Advance **buttons**
 
 ![](<../../.gitbook/assets/image (578).png>)
 
@@ -286,7 +331,7 @@ R = 256
 L = 256
 ```
 
-So, in this kind of programs, the an interesting part will be **how the program treats the user input**. In the address **0x4000130** you will find the commonly found function: **KEYINPUT.**
+So, in this kind of program, the interesting part will be **how the program treats the user input**. In the address **0x4000130** you will find the commonly found function: **KEYINPUT**.
 
 ![](<../../.gitbook/assets/image (579).png>)
 
@@ -315,7 +360,7 @@ void FUN_080015a8(void)
   uVar4 = DAT_030004d8;
 ```
 
-&#x20;It's found this code:
+It's found this code:
 
 ```c
   do {
@@ -364,12 +409,12 @@ In the previous code you can see that we are comparing **uVar1** (the place wher
 * First, it's compared with the **value 4** (**SELECT** button): In the challenge this button clears the screen
 * Then, it's comparing it with the **value 8** (**START** button): In the challenge this checks is the code is valid to get the flag.
   * In this case the var **`DAT_030000d8`** is compared with 0xf3 and if the value is the same some code is executed.
-* In any other cases, some cont (`DAT_030000d4`) is checked. It's a cont because it's adding 1 right after entering in the code. \
-  **I**f less than 8 something that involves **adding** values to **`DAT_030000d8` ** is done (basically it's adding the values of the keys pressed in this variable as long as the cont is less than 8).
+* In any other cases, some cont (`DAT_030000d4`) is checked. It's a cont because it's adding 1 right after entering in the code.\
+  **I**f less than 8 something that involves **adding** values to \*\*`DAT_030000d8` \*\* is done (basically it's adding the values of the keys pressed in this variable as long as the cont is less than 8).
 
 So, in this challenge, knowing the values of the buttons, you needed to **press a combination with a length smaller than 8 that the resulting addition is 0xf3.**
 
-**Reference for this tutorial:** [**https://exp.codes/Nostalgia/**](https://exp.codes/Nostalgia/)****
+**Reference for this tutorial:** [**https://exp.codes/Nostalgia/**](https://exp.codes/Nostalgia/)
 
 ## Game Boy
 
@@ -379,3 +424,23 @@ So, in this challenge, knowing the values of the buttons, you needed to **press 
 
 * [https://github.com/0xZ0F/Z0FCourse\_ReverseEngineering](https://github.com/0xZ0F/Z0FCourse\_ReverseEngineering)
 * [https://github.com/malrev/ABD](https://github.com/malrev/ABD) (Binary deobfuscation)
+
+**Try Hard Security Group**
+
+<figure><img src="/.gitbook/assets/telegram-cloud-document-1-5159108904864449420.jpg" alt=""><figcaption></figcaption></figure>
+
+{% embed url="https://discord.gg/tryhardsecurity" %}
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks\_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>

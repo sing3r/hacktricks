@@ -1,10 +1,27 @@
-# Z3 - Satisfiability Modulo Theories (SMT)
+
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
 
 Very basically, this tool will help us to find values for variables that need to satisfy some conditions and calculating them by hand will be so annoying. Therefore, you can indicate to Z3 the conditions the variables need to satisfy and it will find some values (if possible).
 
-## Basic Operations
+**Some texts and examples are extracted from [https://ericpony.github.io/z3py-tutorial/guide-examples.htm](https://ericpony.github.io/z3py-tutorial/guide-examples.htm)**
 
-### Booleans/And/Or/Not
+# Basic Operations
+
+## Booleans/And/Or/Not
 
 ```python
 #pip3 install z3-solver
@@ -21,7 +38,7 @@ s.check() #If response is "sat" then the model is satifable, if "unsat" somethin
 print(s.model()) #Print valid values to satisfy the model
 ```
 
-### Ints/Simplify/Reals
+## Ints/Simplify/Reals
 
 ```python
 from z3 import *
@@ -43,7 +60,7 @@ set_option(precision=30)
 print(solve(r1**2 + r2**2 == 3, r1**3 == 2))
 ```
 
-### Printing Model
+## Printing Model
 
 ```python
 from z3 import *
@@ -59,7 +76,7 @@ for d in m.decls():
     print("%s = %s" % (d.name(), m[d]))
 ```
 
-## Machine Arithmetic
+# Machine Arithmetic
 
 Modern CPUs and main-stream programming languages use arithmetic over **fixed-size bit-vectors**. Machine arithmetic is available in Z3Py as **Bit-Vectors**.
 
@@ -78,7 +95,7 @@ b = BitVecVal(65535, 32)
 print(simplify(a == b)) #This is False
 ```
 
-### Signed/Unsigned Numbers
+## Signed/Unsigned Numbers
 
 Z3 provides special signed versions of arithmetical operations where it makes a difference whether the **bit-vector is treated as signed or unsigned**. In Z3Py, the operators **<, <=, >, >=, /, % and >>** correspond to the **signed** versions. The corresponding **unsigned** operators are **ULT, ULE, UGT, UGE, UDiv, URem and LShR.**
 
@@ -100,7 +117,7 @@ solve(x < 0)
 solve(ULT(x, 0))
 ```
 
-### Functions
+## Functions
 
 **Interpreted functio**ns such as arithmetic where the **function +** has a **fixed standard interpretation** (it adds two numbers). **Uninterpreted functions** and constants are **maximally flexible**; they allow **any interpretation** that is **consistent** with the **constraints** over the function or constant.
 
@@ -125,9 +142,9 @@ s.check()
 print(m.model())
 ```
 
-## Examples
+# Examples
 
-### Sudoku solver
+## Sudoku solver
 
 ```python
 # 9x9 matrix of integer variables
@@ -182,3 +199,20 @@ else:
 ## References
 
 * [https://ericpony.github.io/z3py-tutorial/guide-examples.htm](https://ericpony.github.io/z3py-tutorial/guide-examples.htm)
+
+
+<details>
+
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
+
+

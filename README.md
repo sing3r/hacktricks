@@ -1,60 +1,155 @@
----
-description: >-
-  Welcome to the page where you will find each hacking trick/technique/whatever
-  I have learnt in CTFs, real life apps, and reading researches and news.
----
-
 # HackTricks
 
-![](<.gitbook/assets/portada alcoholica.png>)
+<figure><img src=".gitbook/assets/hacktricks.gif" alt=""><figcaption></figcaption></figure>
 
-**Welcome to the page where you will find each hacking trick/technique/whatever I have learnt in CTFs, real life apps, and reading researches and news.**
+_Hacktricks logos & motion design by_ [_@ppiernacho_](https://www.instagram.com/ppieranacho/)_._
 
-Here you can find a little **introduction:**
-
-## [**Pentesting Methodology**](pentesting-methodology.md)
-
-Here you will find the **typical flow** that **you should follow when pentesting** one or more **machines**.
-
-**Click in the title to start!**
-
-{% hint style="danger" %}
-Do you use **Hacktricks every day**? Did you find the book **very** **useful**? Would you like to **receive extra help** with cybersecurity questions? Would you like to **find more and higher quality content on Hacktricks**?\
-[**Support Hacktricks through github sponsors**](https://github.com/sponsors/carlospolop) **so we can dedicate more time to it and also get access to the Hacktricks private group where you will get the help you need and much more!**
+{% hint style="success" %}
+**Welcome to the wiki where you will find each hacking trick/technique/whatever I have learnt from CTFs, real life apps, reading researches, and news.**
 {% endhint %}
 
-If you want to know about my **latest modifications**/**additions** or you have **any suggestion for HackTricks** or **PEASS**, **join the** [**💬**](https://emojipedia.org/speech-balloon/)[**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass), or **follow** me on **Twitter** [**🐦**](https://github.com/carlospolop/hacktricks/tree/7af18b62b3bdc423e11444677a6a73d4043511e9/\[https:/emojipedia.org/bird/README.md)[**@carlospolopm**](https://twitter.com/carlospolopm)**.**\
-If you want to **share some tricks with the community** you can also submit **pull requests** to [**https://github.com/carlospolop/hacktricks**](https://github.com/carlospolop/hacktricks) that will be reflected in this book and don't forget to **give ⭐** on **github** to **motivate** **me** to continue developing this book.
+To get started follow this page where you will find the **typical flow** that **you should follow when pentesting** one or more **machines:**
+
+{% content-ref url="generic-methodologies-and-resources/pentesting-methodology.md" %}
+[pentesting-methodology.md](generic-methodologies-and-resources/pentesting-methodology.md)
+{% endcontent-ref %}
 
 ## Corporate Sponsors
 
 ### [STM Cyber](https://www.stmcyber.com)
 
-![](<.gitbook/assets/image (642) (1).png>)
+<figure><img src=".gitbook/assets/stm (1).png" alt=""><figcaption></figcaption></figure>
 
-[**STM Cyber**](https://www.stmcyber.com) is a great cybersecurity company whose slogan is **HACK THE UNHACKABLE**. They perform their own research and develop their own hacking tools to **offer several valuable cybersecurity services** like pentestings, Red teams and training.
+[**STM Cyber**](https://www.stmcyber.com) is a great cybersecurity company whose slogan is **HACK THE UNHACKABLE**. They perform their own research and develop their own hacking tools to **offer several valuable cybersecurity services** like pentesting, Red teams and training.
 
 You can check their **blog** in [**https://blog.stmcyber.com**](https://blog.stmcyber.com)
 
 **STM Cyber** also support cybersecurity open source projects like HackTricks :)
 
-### [**INE**](https://ine.com)
+***
 
-![](<.gitbook/assets/INE\_Logo (3).jpg>)
+### [RootedCON](https://www.rootedcon.com/)
 
-[**INE**](https://ine.com) is a great platform to start learning or **improve** your **IT knowledge** through their huge range of **courses**. I personally like and have completed many from the [**cybersecurity section**](https://ine.com/pages/cybersecurity). **INE** also provides with the official courses to prepare the **certifications** from [**eLearnSecurity**](https://elearnsecurity.com)**.**
+<figure><img src=".gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-**INE** also support cybersecurity open source projects like HackTricks :)
+[**RootedCON**](https://www.rootedcon.com) is the most relevant cybersecurity event in **Spain** and one of the most important in **Europe**. With **the mission of promoting technical knowledge**, this congress is a boiling meeting point for technology and cybersecurity professionals in every discipline.
 
-#### **Courses and Certifications reviews**
+{% embed url="https://www.rootedcon.com/" %}
 
-You can find **my reviews of the certifications eMAPT and eWPTXv2** (and their **respective preparation courses**) in the following page:
+***
 
-{% content-ref url="courses-and-certifications-reviews/ine-courses-and-elearnsecurity-certifications-reviews.md" %}
-[ine-courses-and-elearnsecurity-certifications-reviews.md](courses-and-certifications-reviews/ine-courses-and-elearnsecurity-certifications-reviews.md)
+### [Intigriti](https://www.intigriti.com)
+
+<figure><img src=".gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+**Intigriti** is the **Europe's #1** ethical hacking and **bug bounty platform.**
+
+**Bug bounty tip**: **sign up** for **Intigriti**, a premium **bug bounty platform created by hackers, for hackers**! Join us at [**https://go.intigriti.com/hacktricks**](https://go.intigriti.com/hacktricks) today, and start earning bounties up to **$100,000**!
+
+{% embed url="https://go.intigriti.com/hacktricks" %}
+
+***
+
+### [Trickest](https://trickest.com/?utm\_campaign=hacktrics\&utm\_medium=banner\&utm\_source=hacktricks)
+
+<figure><img src=".gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+\
+Use [**Trickest**](https://trickest.com/?utm\_campaign=hacktrics\&utm\_medium=banner\&utm\_source=hacktricks) to easily build and **automate workflows** powered by the world's **most advanced** community tools.
+
+Get Access Today:
+
+{% embed url="https://trickest.com/?utm_campaign=hacktrics&utm_medium=banner&utm_source=hacktricks" %}
+
+***
+
+### [HACKENPROOF](https://bit.ly/3xrrDrL)
+
+<figure><img src=".gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+Join [**HackenProof Discord**](https://discord.com/invite/N3FrSbmwdy) server to communicate with experienced hackers and bug bounty hunters!
+
+**Hacking Insights**\
+Engage with content that delves into the thrill and challenges of hacking
+
+**Real-Time Hack News**\
+Keep up-to-date with fast-paced hacking world through real-time news and insights
+
+**Latest Announcements**\
+Stay informed with the newest bug bounties launching and crucial platform updates
+
+**Join us on** [**Discord**](https://discord.com/invite/N3FrSbmwdy) and start collaborating with top hackers today!
+
+***
+
+### [Pentest-Tools.com](https://pentest-tools.com/) - The essential penetration testing toolkit
+
+<figure><img src=".gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+**Instantly available setup for vulnerability assessment & penetration testing**. Run a full pentest from anywhere with 20+ tools & features that go from recon to reporting. We don't replace pentesters - we develop custom tools, detection & exploitation modules to give them back some time to dig deeper, pop shells, and have fun.
+
+{% embed url="https://pentest-tools.com/" %}
+
+***
+
+### [SerpApi](https://serpapi.com/)
+
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+SerpApi offers fast and easy real-time APIs to **access search engine results**. They scrape search engines, handle proxies, solve captchas, and parse all rich structured data for you.
+
+A subscription to one of SerpApi’s plans includes access to over 50 different APIs for scraping different search engines, including Google, Bing, Baidu, Yahoo, Yandex, and more.
+
+Unlike other providers, SerpApi doesn’t just scrape organic results. SerpApi responses consistently include all ads, inline images and videos, knowledge graphs, and other elements and features present in the search results.
+
+Current SerpApi customers include Apple, Shopify, and GrubHub.
+
+For more information check out their [blog](https://serpapi.com/blog/)**,** or try an example in their [**playground**](https://serpapi.com/playground)**.**
+
+You can **create a free account** [**here**](https://serpapi.com/users/sign\_up)**.**
+
+***
+
+### [Try Hard Security Group](https://discord.gg/tryhardsecurity)
+
+<figure><img src=".gitbook/assets/telegram-cloud-document-1-5159108904864449420.jpg" alt=""><figcaption></figcaption></figure>
+
+{% embed url="https://discord.gg/tryhardsecurity" %}
+
+***
+
+### [WebSec](https://websec.nl/)
+
+<figure><img src=".gitbook/assets/websec (1).svg" alt=""><figcaption></figcaption></figure>
+
+[**WebSec**](https://websec.nl) is a professional cybersecurity company based in **Amsterdam** which helps **protecting** businesses **all over the world** against the latest cybersecurity threats by providing **offensive-security services** with a **modern** approach.
+
+WebSec is an **all-in-one security company** which means they do it all; Pentesting, **Security** Audits, Awareness Trainings, Phishing Campagnes, Code Review, Exploit Development, Security Experts Outsourcing and much more.
+
+Another cool thing about WebSec is that unlike the industry average WebSec is **very confident in their skills**, to such an extent that they **guarantee the best quality results**, it states on their website "**If we can't hack it, You don't pay it!**". For more info take a look at their [**website**](https://websec.nl/en/) and [**blog**](https://websec.nl/blog/)!
+
+In addition to the above WebSec is also a **committed supporter of HackTricks.**
+
+{% embed url="https://www.youtube.com/watch?v=Zq2JycGDCPM" %}
+
+## License & Disclaimer
+
+**Check them in:**
+
+{% content-ref url="welcome/hacktricks-values-and-faq.md" %}
+[hacktricks-values-and-faq.md](welcome/hacktricks-values-and-faq.md)
 {% endcontent-ref %}
 
-## License
+<details>
 
-**Copyright © Carlos Polop 2021. Except where otherwise specified (the external information copied into the book belongs to the original authors), the text on** [**HACK TRICKS**](https://github.com/carlospolop/hacktricks) **by Carlos Polop is licensed under the**[ **Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**](https://creativecommons.org/licenses/by-nc/4.0/)**.**\
-**If you want to use it with commercial purposes, contact me.**
+<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+
+Other ways to support HackTricks:
+
+* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
+* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks\_live**](https://twitter.com/hacktricks\_live)**.**
+* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+
+</details>
