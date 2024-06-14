@@ -14,6 +14,20 @@ Other ways to support HackTricks:
 
 </details>
 
+### [WhiteIntel](https://whiteintel.io)
+
+<figure><img src="../../../.gitbook/assets/image (1227).png" alt=""><figcaption></figcaption></figure>
+
+[**WhiteIntel**](https://whiteintel.io) is a **dark-web** fueled search engine that offers **free** functionalities to check if a company or its customers have been **compromised** by **stealer malwares**.
+
+Their primary goal of WhiteIntel is to combat account takeovers and ransomware attacks resulting from information-stealing malware.
+
+You can check their website and try their engine for **free** at:
+
+{% embed url="https://whiteintel.io" %}
+
+***
+
 ## Static Analysis
 
 ### otool
@@ -129,7 +143,7 @@ Note that this names could be obfuscated to make the reversing of the binary mor
 
 When a function is called in a binary that uses objective-C, the compiled code instead of calling that function, it will call **`objc_msgSend`**. Which will be calling the final function:
 
-![](<../../../.gitbook/assets/image (560).png>)
+![](<../../../.gitbook/assets/image (305).png>)
 
 The params this function expects are:
 
@@ -154,6 +168,10 @@ x64:
 | **5th argument**  | **r8**                                                          | **3rd argument to the method**                         |
 | **6th argument**  | **r9**                                                          | **4th argument to the method**                         |
 | **7th+ argument** | <p><strong>rsp+</strong><br><strong>(on the stack)</strong></p> | **5th+ argument to the method**                        |
+
+### Dynadump
+
+[**Dynadump**](https://github.com/DerekSelander/dynadump) is a tool to get Objc-Classes from dylibs.
 
 ### Swift
 
@@ -201,6 +219,31 @@ Note that in order to debug binaries, **SIP needs to be disabled** (`csrutil dis
 Note that in order to **instrument system binaries**, (such as `cloudconfigurationd`) on macOS, **SIP must be disabled** (just removing the signature won't work).
 {% endhint %}
 
+### APIs
+
+macOS exposes some interesting APIs that give information about the processes:
+
+* `proc_info`: This is the main one giving a lot of information about each process. You need to be root to get other processes information but you don't need special entitlements or mach ports.
+* `libsysmon.dylib`: It allows to get information about processes via XPC exposed functions, however, it's needed to have the entitlement `com.apple.sysmond.client`.
+
+### Stackshot & microstackshots
+
+**Stackshotting** is a technique used to capture the state of the processes, including the call stacks of all running threads. This is particularly useful for debugging, performance analysis, and understanding the behavior of the system at a specific point in time. On iOS and macOS, stackshotting can be performed using several tools and methods like the tools **`sample`** and **`spindump`**.
+
+### Sysdiagnose
+
+This tool (`/usr/bini/ysdiagnose`) basically collects a lot of information from your computer executing tens of different commands such as `ps`, `zprint`...
+
+It must be run as **root** and the daemon `/usr/libexec/sysdiagnosed` has very interesting entitlements such as `com.apple.system-task-ports` and `get-task-allow`.
+
+Its plist is located in `/System/Library/LaunchDaemons/com.apple.sysdiagnose.plist` which declares 3 MachServices:
+
+* `com.apple.sysdiagnose.CacheDelete`: Deletes old archives in /var/rmp
+* `com.apple.sysdiagnose.kernel.ipc`: Special port 23 (kernel)
+* `com.apple.sysdiagnose.service.xpc`: User mode interface through `Libsysdiagnose` Obj-C class. Three arguments in a dict can be passed (`compress`, `display`, `run`)
+
+
+
 ### Unified Logs
 
 MacOS generates a lot of logs that can be very useful when running an application trying to understand **what is it doing**.
@@ -217,11 +260,11 @@ In the left panel of hopper it's possible to see the symbols (**Labels**) of the
 
 In the middle panel you can see the **dissasembled code**. And you can see it a **raw** disassemble, as **graph**, as **decompiled** and as **binary** by clicking on the respective icon:
 
-<figure><img src="../../../.gitbook/assets/image (2) (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (343).png" alt=""><figcaption></figcaption></figure>
 
 Right clicking in a code object you can see **references to/from that object** or even change its name (this doesn't work in decompiled pseudocode):
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1117).png" alt=""><figcaption></figcaption></figure>
 
 Moreover, in the **middle down you can write python commands**.
 
@@ -317,13 +360,51 @@ dtruss -c ls #Get syscalls of ls
 dtruss -c -p 1000 #get syscalls of PID 1000
 ```
 
+### kdebug
+
+It's a kernel tracing facility. The documented codes can be found in **`/usr/share/misc/trace.codes`**.
+
+Tools like `latency`, `sc_usage`, `fs_usage` and `trace` use it internally.
+
+To interface with `kdebug` `sysctl` is used over the `kern.kdebug` namespace and the MIBs to use can be found in `sys/sysctl.h` having the functions implemented in `bsd/kern/kdebug.c`.
+
+To interact with kdebug with a custom client these are usually the steps:
+
+* Remove existing settings with KERN\_KDSETREMOVE
+* Set trace with KERN\_KDSETBUF and KERN\_KDSETUP
+* Use KERN\_KDGETBUF to get number of buffer entries
+* Get the own client out of the trace with KERN\_KDPINDEX
+* Enable tracing with KERN\_KDENABLE
+* Read the buffer calling KERN\_KDREADTR
+* To match each thread with its process call KERN\_KDTHRMAP.
+
+In order to get this information it's possible to use the Apple tool **`trace`** or the custom tool [kDebugView (kdv)](https://newosxbook.com/tools/kdv.html)**.**
+
+**Note that Kdebug is only available for 1 costumer at a time.** So only one k-debug powered tool can be executed at the same time.
+
 ### ktrace
 
+The `ktrace_*` APIs come from `libktrace.dylib` which wrap those of `Kdebug`. Then, a client can just call `ktrace_session_create` and `ktrace_events_[single/class]` to set callbacks on specific codes and then start it with `ktrace_start`.
+
 You can use this one even with **SIP activated**
+
+You can use as clients the utility `ktrace`:
 
 ```bash
 ktrace trace -s -S -t c -c ls | grep "ls("
 ```
+
+Or `tailspin`.
+
+### kperf
+
+This is used to do a kernel level profiling and it's built using `Kdebug` callouts.
+
+Basically, the global variable `kernel_debug_active` is checked and is set it calls `kperf_kdebug_handler` withe `Kdebug` code and address of the kernel frame calling. If the `Kdebug` code matches one selected it gets the "actions" configured as a bitmap (check `osfmk/kperf/action.h` for the options).
+
+Kperf has a sysctl MIB table also: (as root) `sysctl kperf`. These code can be found in `osfmk/kperf/kperfbsd.c`.
+
+Moreover, a subset of Kperfs functionality resides in `kpc`, which provides information about machine performance counters.
 
 ### ProcessMonitor
 
@@ -332,9 +413,9 @@ ktrace trace -s -S -t c -c ls | grep "ls("
 ### SpriteTree
 
 [**SpriteTree**](https://themittenmac.com/tools/) is a tool to prints the relations between processes.\
-You need to monitor your mac with a command like **`sudo eslogger fork exec rename create > cap.json`** (the terminal launching this required FDA). And then you can load the json in this tool to viwe all the relations:
+You need to monitor your mac with a command like **`sudo eslogger fork exec rename create > cap.json`** (the terminal launching this required FDA). And then you can load the json in this tool to view all the relations:
 
-<figure><img src="../../../.gitbook/assets/image (710).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1182).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ### FileMonitor
 
@@ -348,7 +429,7 @@ You need to monitor your mac with a command like **`sudo eslogger fork exec rena
 
 [**Apple Instruments**](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CellularBestPractices/Appendix/Appendix.html) are part of Xcode’s Developer tools – used for monitoring application performance, identifying memory leaks and tracking filesystem activity.
 
-![](<../../../.gitbook/assets/image (15).png>)
+![](<../../../.gitbook/assets/image (1138).png>)
 
 ### fs\_usage
 
@@ -415,6 +496,16 @@ When calling the **`objc_sendMsg`** function, the **rsi** register holds the **n
   * You can check if the **`sysctl`** or **`ptrace`** function is being **imported** (but the malware could import it dynamically)
   * As noted in this writeup, “[Defeating Anti-Debug Techniques: macOS ptrace variants](https://alexomara.com/blog/defeating-anti-debug-techniques-macos-ptrace-variants/)” :\
     “_The message Process # exited with **status = 45 (0x0000002d)** is usually a tell-tale sign that the debug target is using **PT\_DENY\_ATTACH**_”
+
+## Core Dumps
+
+Core dumps are created if:
+
+* `kern.coredump` sysctl is set to 1 (by default)
+* If the process wasn't suid/sgid or `kern.sugid_coredump` is 1 (by default is 0)
+* The `AS_CORE` limit allows the operation. It's possible to suppress code dumps creation by calling `ulimit -c 0` and re-enable them with `ulimit -c unlimited`.
+
+In those cases the core dumps is generated according to `kern.corefile` sysctl and stored usually in `/cores/core/.%P`.
 
 ## Fuzzing
 
@@ -539,6 +630,18 @@ litefuzz -s -a tcp://localhost:5900 -i input/screenshared-session --reportcrash 
 * [**https://www.youtube.com/watch?v=T5xfL9tEg44**](https://www.youtube.com/watch?v=T5xfL9tEg44)
 * [**https://taomm.org/vol1/analysis.html**](https://taomm.org/vol1/analysis.html)
 * [**The Art of Mac Malware: The Guide to Analyzing Malicious Software**](https://taomm.org/)
+
+### [WhiteIntel](https://whiteintel.io)
+
+<figure><img src="../../../.gitbook/assets/image (1227).png" alt=""><figcaption></figcaption></figure>
+
+[**WhiteIntel**](https://whiteintel.io) is a **dark-web** fueled search engine that offers **free** functionalities to check if a company or its customers have been **compromised** by **stealer malwares**.
+
+Their primary goal of WhiteIntel is to combat account takeovers and ransomware attacks resulting from information-stealing malware.
+
+You can check their website and try their engine for **free** at:
+
+{% embed url="https://whiteintel.io" %}
 
 <details>
 

@@ -14,6 +14,11 @@ Other ways to support HackTricks:
 
 </details>
 
+<figure><img src="https://pentest.eu/RENDER_WebSec_10fps_21sec_9MB_29042024.gif" alt=""><figcaption></figcaption></figure>
+
+{% embed url="https://websec.nl/" %}
+
+
 
 For a phishing assessment sometimes it might be useful to completely **clone a website**.
 
@@ -40,6 +45,9 @@ goclone <url>
 #https://github.com/trustedsec/social-engineer-toolkit
 ```
 
+<figure><img src="https://pentest.eu/RENDER_WebSec_10fps_21sec_9MB_29042024.gif" alt=""><figcaption></figcaption></figure>
+
+{% embed url="https://websec.nl/" %}
 
 
 <details>
