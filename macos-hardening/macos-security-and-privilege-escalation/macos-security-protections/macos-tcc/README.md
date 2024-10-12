@@ -1,19 +1,5 @@
 # macOS TCC
 
-{% hint style="success" %}
-Learn & practice AWS Hacking:<img src="/.gitbook/assets/arte.png" alt="" data-size="line">[**HackTricks Training AWS Red Team Expert (ARTE)**](https://training.hacktricks.xyz/courses/arte)<img src="/.gitbook/assets/arte.png" alt="" data-size="line">\
-Learn & practice GCP Hacking: <img src="/.gitbook/assets/grte.png" alt="" data-size="line">[**HackTricks Training GCP Red Team Expert (GRTE)**<img src="/.gitbook/assets/grte.png" alt="" data-size="line">](https://training.hacktricks.xyz/courses/grte)
-
-<details>
-
-<summary>Support HackTricks</summary>
-
-* Check the [**subscription plans**](https://github.com/sponsors/carlospolop)!
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks\_live**](https://twitter.com/hacktricks\_live)**.**
-* **Share hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
-
-</details>
-{% endhint %}
 
 ## **Basic Information**
 
@@ -57,9 +43,6 @@ However, remember that a process with these high privileges (like **FDA** or **`
 * The SIP protected file **`/Users/carlospolop/Downloads/MDMOverrides.plist`** (also protected from read access with TCC), contains more TCC granted permissions.
 * The SIP protected file **`/Library/Apple/Library/Bundles/TCC_Compatibility.bundle/Contents/Resources/AllowApplicationsList.plist`** (bu readable by anyone) is an allow list of applications that require a TCC exception.
 
-{% hint style="success" %}
-The TCC database in **iOS** is in **`/private/var/mobile/Library/TCC/TCC.db`**
-{% endhint %}
 
 {% hint style="info" %}
 The **notification center UI** can make **changes in the system TCC database**:
@@ -125,9 +108,6 @@ sqlite> select * from access where client LIKE "%telegram%" and auth_value=0;
 {% endtab %}
 {% endtabs %}
 
-{% hint style="success" %}
-Checking both databases you can check the permissions an app has allowed, has forbidden, or doesn't have (it will ask for it).
-{% endhint %}
 
 * The **`service`** is the TCC **permission** string representation
 * The **`client`** is the **bundle ID** or **path to binary** with the permissions
@@ -202,9 +182,6 @@ echo "X'$REQ_HEX'"
 
 You could also check **already given permissions** to apps in `System Preferences --> Security & Privacy --> Privacy --> Files and Folders`.
 
-{% hint style="success" %}
-Users _can_ **delete or query rules** using **`tccutil`** .
-{% endhint %}
 
 #### Reset TCC permissions
 
@@ -260,9 +237,6 @@ codesign -dv --entitlements :- /System/Applications/Calendar.app
 
 This will avoid Calendar ask the user to access reminders, calendar and the address book.
 
-{% hint style="success" %}
-Apart from some official documentation about entitlements it's also possible to find unofficial **interesting information about entitlements in** [**https://newosxbook.com/ent.jl**](https://newosxbook.com/ent.jl)
-{% endhint %}
 
 Some TCC permissions are: kTCCServiceAppleEvents, kTCCServiceCalendar, kTCCServicePhotos... There is no public list that defines all of them but you can check this [**list of known ones**](https://www.rainforestqa.com/blog/macos-tcc-db-deep-dive#service).
 
@@ -624,17 +598,3 @@ AllowApplicationsList.plist:
 * [**https://www.brunerd.com/blog/2020/01/07/track-and-tackle-com-apple-macl/**](https://www.brunerd.com/blog/2020/01/07/track-and-tackle-com-apple-macl/)
 * [**https://www.sentinelone.com/labs/bypassing-macos-tcc-user-privacy-protections-by-accident-and-design/**](https://www.sentinelone.com/labs/bypassing-macos-tcc-user-privacy-protections-by-accident-and-design/)
 
-{% hint style="success" %}
-Learn & practice AWS Hacking:<img src="/.gitbook/assets/arte.png" alt="" data-size="line">[**HackTricks Training AWS Red Team Expert (ARTE)**](https://training.hacktricks.xyz/courses/arte)<img src="/.gitbook/assets/arte.png" alt="" data-size="line">\
-Learn & practice GCP Hacking: <img src="/.gitbook/assets/grte.png" alt="" data-size="line">[**HackTricks Training GCP Red Team Expert (GRTE)**<img src="/.gitbook/assets/grte.png" alt="" data-size="line">](https://training.hacktricks.xyz/courses/grte)
-
-<details>
-
-<summary>Support HackTricks</summary>
-
-* Check the [**subscription plans**](https://github.com/sponsors/carlospolop)!
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks\_live**](https://twitter.com/hacktricks\_live)**.**
-* **Share hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
-
-</details>
-{% endhint %}

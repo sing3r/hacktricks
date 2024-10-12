@@ -1,51 +1,18 @@
 # HackTricks Values & FAQ
 
-{% hint style="success" %}
-Learn & practice AWS Hacking:<img src="/.gitbook/assets/arte.png" alt="" data-size="line">[**HackTricks Training AWS Red Team Expert (ARTE)**](https://training.hacktricks.xyz/courses/arte)<img src="/.gitbook/assets/arte.png" alt="" data-size="line">\
-Learn & practice GCP Hacking: <img src="/.gitbook/assets/grte.png" alt="" data-size="line">[**HackTricks Training GCP Red Team Expert (GRTE)**<img src="/.gitbook/assets/grte.png" alt="" data-size="line">](https://training.hacktricks.xyz/courses/grte)
-
-<details>
-
-<summary>Support HackTricks</summary>
-
-* Check the [**subscription plans**](https://github.com/sponsors/carlospolop)!
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks\_live**](https://twitter.com/hacktricks\_live)**.**
-* **Share hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
-
-</details>
-{% endhint %}
 
 ## HackTricks Values
 
-{% hint style="success" %}
-These are the **values of the HackTricks Project**:
-
-* Give **FREE** access to **EDUCATIONAL hacking** resources to **ALL** Internet.
-  * Hacking is about learning, and learning should be as free as possible.
-  * The purpose of this book is to serve as a comprehensive **educational resource**.
-* **STORE** awesome **hacking** techniques that the community publishes giving the **ORIGINAL** **AUTHORS** all the **credits**.
-  * **We don't want the credit from other people**, we just want to store cool tricks for everyone.
-  * We also write **our own researches** in HackTricks.
-  * In several cases we will just write **in HackTricks a summary of the important parts** of the technique and will **encourage the lector to visit the original post** for more details.
-* **ORGANIZE** all the hacking techniques in the book so it's **MORE ACCESSIBLE**
-  * The HackTricks team has dedicated thousands of hours for free **only to organize the content** so people can **learn faster**
-{% endhint %}
 
 <figure><img src="../.gitbook/assets/hack tricks gif.gif" alt="" width="375"><figcaption></figcaption></figure>
 
 ## HackTricks faq
 
-{% hint style="success" %}
-* **Thank you so much for these resources, how can I thank you?**
-{% endhint %}
 
 You can publicly thanks HackTricks teams for putting together all these resources publicly in a tweet mentioning [**@hacktricks\_live**](https://twitter.com/hacktricks\_live).\
 If you are specially grateful you can also [**sponsor the project here**](https://github.com/sponsors/carlospolop).\
 And don't forget to **give a star in the Github projects!** (Find the links below).
 
-{% hint style="success" %}
-* **How can I contribute to the project?**
-{% endhint %}
 
 You can **share new tips and tricks with the community or fix bugs** you find in the books sending a **Pull Request** to the respective Github pages:
 
@@ -54,15 +21,9 @@ You can **share new tips and tricks with the community or fix bugs** you find in
 
 Don't forget to **give a star in the Github projects!**
 
-{% hint style="success" %}
-* **Can I copy some content from HackTricks and put it in my blog?**
-{% endhint %}
 
 Yes, you can, but **don't forget to mention the specific link(s)** where the content was taken from.
 
-{% hint style="success" %}
-* **How can I cite a page of HackTricks?**
-{% endhint %}
 
 As long as the link **of** the page(s) were you took the information from appears it's enough.\
 If you need a bibtex you can use something like:
@@ -157,17 +118,3 @@ The user is solely responsible for any actions taken based on the information co
 By using this book, the user agrees to release the authors and publishers from any and all liability and responsibility for any damages, losses, or harm that may result from the use of this book or any of the information contained within it.
 {% endhint %}
 
-{% hint style="success" %}
-Learn & practice AWS Hacking:<img src="/.gitbook/assets/arte.png" alt="" data-size="line">[**HackTricks Training AWS Red Team Expert (ARTE)**](https://training.hacktricks.xyz/courses/arte)<img src="/.gitbook/assets/arte.png" alt="" data-size="line">\
-Learn & practice GCP Hacking: <img src="/.gitbook/assets/grte.png" alt="" data-size="line">[**HackTricks Training GCP Red Team Expert (GRTE)**<img src="/.gitbook/assets/grte.png" alt="" data-size="line">](https://training.hacktricks.xyz/courses/grte)
-
-<details>
-
-<summary>Support HackTricks</summary>
-
-* Check the [**subscription plans**](https://github.com/sponsors/carlospolop)!
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks\_live**](https://twitter.com/hacktricks\_live)**.**
-* **Share hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
-
-</details>
-{% endhint %}
